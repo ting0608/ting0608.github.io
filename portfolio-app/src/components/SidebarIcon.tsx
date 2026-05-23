@@ -1,5 +1,5 @@
 type SidebarIconProps = {
-  name: 'home' | 'comment' | 'briefcase'
+  name: 'home' | 'comment' | 'briefcase' | 'linkedin'
   bold?: boolean
 }
 
@@ -29,6 +29,16 @@ export function SidebarIcon({ name, bold = false }: SidebarIconProps) {
       <svg {...common}>
         <path d="M5 5h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H9l-4 3v-3H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />
         <path d="M8 10h8M8 13h5" />
+      </svg>
+    )
+  }
+
+  if (name === 'linkedin') {
+    return (
+      <svg {...common}>
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-12h4v1.5" />
+        <rect x="2" y="9" width="4" height="12" rx="0.5" />
+        <circle cx="4" cy="4" r="2" />
       </svg>
     )
   }

@@ -31,6 +31,7 @@
   background: transparent;
   color: var(--color-sky);
   cursor: pointer;
+  text-decoration: none;
   transition:
     background 0.2s ease,
     color 0.2s ease,
@@ -170,6 +171,151 @@
   background: var(--bg);
 }
 
+.work-section-inner {
+  width: min(1120px, 100%);
+}
+
+.work-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.work-grid > li {
+  min-width: 0;
+}
+
+.work-card {
+  --work-image-ratio: 495 / 267; /* lovyPharm.png benchmark */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border);
+  background: rgba(15, 76, 117, 0.35);
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.work-card:hover {
+  border-color: rgba(187, 225, 250, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.work-card-media {
+  flex: none;
+  width: 100%;
+  aspect-ratio: var(--work-image-ratio);
+  background: rgba(27, 38, 44, 0.65);
+  overflow: hidden;
+}
+
+.work-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.work-card-media.is-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    145deg,
+    rgba(50, 130, 184, 0.22) 0%,
+    rgba(27, 38, 44, 0.85) 100%
+  );
+}
+
+.work-card-placeholder-label {
+  padding: 0 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.work-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: clamp(0.85rem, 2vw, 1.1rem);
+}
+
+.work-card-title {
+  --work-title-lines: 2;
+  --work-title-line-height: 1.35;
+  margin: 0;
+  color: var(--color-white);
+  font-size: clamp(0.92rem, 1.9vw, 1.02rem);
+  font-weight: 700;
+  line-height: var(--work-title-line-height);
+  letter-spacing: -0.01em;
+  min-height: calc(var(--work-title-line-height) * 1em * var(--work-title-lines));
+  display: -webkit-box;
+  -webkit-line-clamp: var(--work-title-lines);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.work-card-media .work-card-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  min-height: calc(var(--work-title-line-height) * 1em * var(--work-title-lines));
+}
+
+.work-card-description {
+  margin: 0;
+  color: var(--color-white);
+  font-size: clamp(0.88rem, 1.8vw, 0.95rem);
+  line-height: 1.4;
+}
+
+.work-card-tech {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.work-card-tech li {
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(187, 225, 250, 0.28);
+  background: rgba(187, 225, 250, 0.08);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .eyebrow {
   margin: 0 0 0.75rem;
   font-size: 0.8rem;
@@ -218,10 +364,48 @@ h2 {
   margin-top: 0.5rem;
 }
 
+.collage-stage {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  padding: 2.5rem 1.25rem 3rem;
+  margin: 0 auto;
+}
+
+.collage-float-text {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  color: var(--color-white);
+  font-size: clamp(2rem, 1.8vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  animation: collage-float-in 0.45s ease forwards;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  -webkit-text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -ms-text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -o-text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes collage-float-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 0.92;
+    transform: translateY(0);
+  }
+}
+
 .collage-board {
   position: relative;
   width: 100%;
   max-width: 680px;
+  margin: 0 auto;
   aspect-ratio: 16 / 10;
   overflow: visible;
 }
@@ -246,6 +430,7 @@ h2 {
 .collage-cell {
   margin: 0;
   overflow: hidden;
+  border-radius: 0.65rem;
   background: var(--color-navy);
 }
 
@@ -364,19 +549,3 @@ h2 {
   }
 }
 
-.work-placeholder {
-  padding: 2rem;
-  border-radius: 1rem;
-  border: 1px dashed var(--border);
-  background: rgba(187, 225, 250, 0.04);
-}
-
-.work-placeholder p {
-  margin: 0;
-}
-
-.work-hint {
-  margin-top: 0.75rem !important;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}

@@ -6,5 +6,5 @@ export const typingLines = [
 'A React Native Developer.',
 'A builder of things.',
 'An engineer with good bug sense.',
-'A quiet niuma with endless side quests.',
+'A happy 🐄🐎 with endless side quests.',
 ] as const

@@ -1,20 +1,23 @@
 import { RevealText } from '../components/RevealText'
+import { WorkProjectCard } from '../components/WorkProjectCard'
+import { workProjects } from '../data/workProjects'
 
 export function WorkSection() {
   return (
     <section id="work" className="section work-section">
-      <div className="section-inner">
+      <div className="section-inner work-section-inner">
         <RevealText as="h2" delay={0}>
-          What I have done / working on these days
+          What I have done / working on
         </RevealText>
-        <div className="work-placeholder">
-          <RevealText as="p" delay={100}>
-            Portfolio page — temporary placeholder here.
-          </RevealText>
-          <RevealText as="p" className="work-hint" delay={200}>
-            Add project cards, links, and tech tags when you are ready.
-          </RevealText>
-        </div>
+        <ul className="work-grid">
+          {workProjects.map((project, index) => (
+            <li key={project.id}>
+              <RevealText delay={80 + index * 60}>
+                <WorkProjectCard project={project} />
+              </RevealText>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

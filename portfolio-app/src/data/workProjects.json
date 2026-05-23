@@ -1,0 +1,50 @@
+[
+  {
+    "id": "project-one",
+    "title": "Lovy Pharmacy Website",
+    "image": "lovyPharm",
+    "tech": ["Wordpress", "Php", "2022"]
+  },
+  {
+    "id": "project-two",
+    "title": "Real-Time sign language recognition (static sign based)",
+    "image": "signLanguage",
+    "tech": ["Tensorflow", "Python", "2023"]
+  },
+  {
+    "id": "project-three",
+    "title": "Go Daikin app",
+    "image": "goDaikin",
+    "tech": ["React Native", "AWS", "2024 - Present"]
+  },
+  {
+    "id": "project-four",
+    "title": "My Acson app",
+    "image": "myAcson",
+    "tech": ["React Native", "AWS", "2024 - Present"]
+  },
+  {
+    "id": "project-five",
+    "title": "KAMI Inventory Website",
+    "image": "kamiInventory",
+    "tech": ["React", "GCP", "Firebase", "2025"]
+  },
+  {
+    "id": "project-six",
+    "title": "DocsToData RAG Chat",
+    "image": "ragChat",
+    "tech": ["React", "Python", "", "2025"]
+  },
+  {
+    "id": "project-seven",
+    "title": "Weekly Sharing Reminder Website",
+    "image": "weeklySharing",
+    "tech": ["React", "AWS", "2026"]
+  },
+  {
+    "id": "project-eight",
+    "title": "Lengzaicc Portfolio Website",
+    "image": "",
+    "tech": ["React", "Vite", "2026"]
+  }
+]

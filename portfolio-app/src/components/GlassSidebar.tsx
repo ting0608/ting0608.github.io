@@ -7,6 +7,8 @@ const NAV_ITEMS = [
   { id: 'work', label: 'Work', icon: 'briefcase' as const },
 ]
 
+const LINKEDIN_URL = 'https://www.linkedin.com/in/ting-chung-cheng-775a10225/'
+
 export function GlassSidebar() {
   const [activeId, setActiveId] = useState('hero')
 
@@ -56,6 +58,18 @@ export function GlassSidebar() {
             </button>
           </li>
         ))}
+        <li>
+          <a
+            href={LINKEDIN_URL}
+            className="glass-sidebar-link"
+            aria-label="LinkedIn profile"
+            title="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SidebarIcon name="linkedin" />
+          </a>
+        </li>
       </ul>
     </nav>
   )
