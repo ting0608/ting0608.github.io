@@ -2,6 +2,7 @@ import signLanguage from "../assets/images/experience/signLangReg.png";
 import myAcson from "../assets/images/experience/myAcson.png";
 import kamiInventory from "../assets/images/experience/kamiInventory.png";
 import ragChat from "../assets/images/experience/ragChat.png";
+import usawat from "../assets/images/timeline/usawat.png";
 
 export type RoadmapStop = {
   year: number;
@@ -35,7 +36,7 @@ export const roadmapStops: RoadmapStop[] = [
     title: "Short break",
     description:
       "Joined USA summer WAT after graduation, met lots of amazing people. Yea i had my good time there!",
-    image: myAcson,
+    image: usawat,
     x: 43,
     y: 63,
     side: "below",

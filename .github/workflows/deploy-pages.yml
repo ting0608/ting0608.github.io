@@ -25,6 +25,17 @@ jobs:
           node-version: 23
           cache: npm
 
+      - name: Check Firebase repository secrets
+        env:
+          VITE_FIREBASE_MEASUREMENT_ID: ${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}
+          VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+        run: |
+          if [ -z "$VITE_FIREBASE_MEASUREMENT_ID" ] || [ -z "$VITE_FIREBASE_APP_ID" ]; then
+            echo "::error::Firebase repository secrets are missing or empty."
+            echo "Add all VITE_FIREBASE_* under Settings → Secrets and variables → Actions → Repository secrets"
+            exit 1
+          fi
+
       - run: npm ci
       - run: npm run build
         env:

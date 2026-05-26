@@ -43,15 +43,15 @@ GitHub → your repo → **Settings** → **Secrets and variables** → **Action
 
 Add one secret for each key (same names as in `.env`):
 
-| Secret name |
-|-------------|
-| `VITE_FIREBASE_API_KEY` |
-| `VITE_FIREBASE_AUTH_DOMAIN` |
-| `VITE_FIREBASE_PROJECT_ID` |
-| `VITE_FIREBASE_STORAGE_BUCKET` |
+| Secret name                         |
+| ----------------------------------- |
+| `VITE_FIREBASE_API_KEY`             |
+| `VITE_FIREBASE_AUTH_DOMAIN`         |
+| `VITE_FIREBASE_PROJECT_ID`          |
+| `VITE_FIREBASE_STORAGE_BUCKET`      |
 | `VITE_FIREBASE_MESSAGING_SENDER_ID` |
-| `VITE_FIREBASE_APP_ID` |
-| `VITE_FIREBASE_MEASUREMENT_ID` |
+| `VITE_FIREBASE_APP_ID`              |
+| `VITE_FIREBASE_MEASUREMENT_ID`      |
 
 Values can match your local `.env` (same Firebase web app).
 
@@ -81,10 +81,10 @@ Add your live host, for example:
 
 ## Events tracked in this app
 
-| Event | When | Parameters |
-|-------|------|------------|
-| `page_view` | App load | `page_path`, `page_title`, `page_location` |
-| `like_clicked` | Hero fist bump | `location` (e.g. `hero`) |
+| Event          | When                                       | Parameters                                            |
+| -------------- | ------------------------------------------ | ----------------------------------------------------- |
+| `page_view`    | App load                                   | `page_path`, `page_title`, `page_location`            |
+| `like_clicked` | Hero fist bump                             | `location` (e.g. `hero`)                              |
 | `button_click` | Nav, scroll hints, roadmap years, LinkedIn | `button_id` (e.g. `nav_roadmap`, `roadmap_year_2024`) |
 
 ### View counts in Firebase / GA4
