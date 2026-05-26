@@ -203,7 +203,19 @@
     box-shadow 0.2s ease;
 }
 
-.work-card:hover {
+.work-card--link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.work-card--link:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+.work-card:hover,
+.work-card--link:hover {
   border-color: rgba(187, 225, 250, 0.45);
   transform: translateY(-3px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
@@ -380,7 +392,10 @@ h2 {
   font-size: clamp(2rem, 1.8vw, 1rem);
   font-weight: 400;
   letter-spacing: 0.01em;
-  white-space: nowrap;
+  max-width: min(11rem, 38vw);
+  line-height: 1.25;
+  overflow-wrap: break-word;
+  text-wrap: balance;
   animation: collage-float-in 0.45s ease forwards;
   text-shadow: 0 0 10px rgba(0, 0, 0, 1);
   -webkit-text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -389,15 +404,17 @@ h2 {
   -o-text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.collage-float-text--anchor-end {
+  transform: translateX(-100%);
+}
+
 @keyframes collage-float-in {
   from {
     opacity: 0;
-    transform: translateY(6px);
   }
 
   to {
     opacity: 0.92;
-    transform: translateY(0);
   }
 }
 

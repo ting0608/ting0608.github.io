@@ -1,18 +1,12 @@
 {
-  "left-anchor": [
-    "Computer Science with AI",
-    "Born in 2001",
-    "Oiiai"
-  ],
-  "center-focus": [
-    "React Native Developer",
-    "HAHA"
-  ],
+  "left-anchor": ["Computer Science with AI", "01s", "Ting Chung Cheng"],
+  "center-focus": ["React Native", "Redux", "Some CICD", "AWS"],
   "bottom-row": [
-    "HAHAHA",
-    "HEHEHEHE",
-    "HAHAHAHA",
-    "HEHEHEHEHE",
-    "HAHAHAHAHA"
+    "Love memes",
+    "Making good videos",
+    "Gamer",
+    "Guitarist",
+    "Drummer",
+    "Pretty sure you dont have to know"
   ]
 }

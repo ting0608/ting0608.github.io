@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { scrollToSection } from '../hooks/useSmoothScroll'
 import { SidebarIcon } from './SidebarIcon'
 
 const NAV_ITEMS = [
   { id: 'hero', label: 'Home', icon: 'home' as const },
   { id: 'quotes', label: 'Quotes', icon: 'comment' as const },
+  { id: 'timeline', label: 'Timeline', icon: 'timeline' as const },
   { id: 'work', label: 'Work', icon: 'briefcase' as const },
 ]
 
@@ -37,7 +39,7 @@ export function GlassSidebar() {
   }, [])
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToSection(id)
     setActiveId(id)
   }
 

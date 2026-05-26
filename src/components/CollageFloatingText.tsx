@@ -53,7 +53,9 @@ export function CollageFloatingText({ layout }: CollageFloatingTextProps) {
       {items.map((item, index) => (
         <span
           key={`${layout}-${item.text}-${index}`}
-          className="collage-float-text"
+          className={`collage-float-text${
+            item.position.left > 50 ? ' collage-float-text--anchor-end' : ''
+          }`}
           style={{
             top: `${item.position.top}%`,
             left: `${item.position.left}%`,

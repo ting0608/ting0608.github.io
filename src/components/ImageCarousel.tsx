@@ -1,25 +1,29 @@
-import { useEffect, useState } from 'react'
-import { CollageFloatingText } from './CollageFloatingText'
-import { carouselSlides } from '../data/carousel'
+import { useEffect, useState } from "react";
+import { CollageFloatingText } from "./CollageFloatingText";
+import { carouselSlides } from "../data/carousel";
 
-const INTERVAL_MS = 7000
+const INTERVAL_MS = 10000;
 
 export function ImageCarousel() {
-  const slides = carouselSlides
-  const [activeIndex, setActiveIndex] = useState(0)
+  const slides = carouselSlides;
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    if (slides.length <= 1) return
+    if (slides.length <= 1) return;
 
     const timer = window.setInterval(() => {
-      setActiveIndex((i) => (i + 1) % slides.length)
-    }, INTERVAL_MS)
+      setActiveIndex((i) => (i + 1) % slides.length);
+    }, INTERVAL_MS);
 
-    return () => window.clearInterval(timer)
-  }, [slides.length])
+    return () => window.clearInterval(timer);
+  }, [slides.length]);
 
   return (
-    <div className="collage-carousel" role="region" aria-label="Photo collage carousel">
+    <div
+      className="collage-carousel"
+      role="region"
+      aria-label="Photo collage carousel"
+    >
       <div className="collage-stage">
         <CollageFloatingText layout={slides[activeIndex].layout} />
         <div className="collage-board">
@@ -27,7 +31,7 @@ export function ImageCarousel() {
             <div
               key={slide.layout}
               className={`collage-slide collage-layout-${slide.layout}${
-                index === activeIndex ? ' is-active' : ''
+                index === activeIndex ? " is-active" : ""
               }`}
               aria-hidden={index !== activeIndex}
             >
@@ -48,11 +52,11 @@ export function ImageCarousel() {
             role="tab"
             aria-selected={index === activeIndex}
             aria-label={`Show collage set ${index + 1}`}
-            className={index === activeIndex ? 'is-active' : undefined}
+            className={index === activeIndex ? "is-active" : undefined}
             onClick={() => setActiveIndex(index)}
           />
         ))}
       </div>
     </div>
-  )
+  );
 }

@@ -1,10 +1,10 @@
-import { RevealText } from '../components/RevealText'
-import { StarTrails } from '../components/StarTrails'
-import { ScrollHint } from '../components/ScrollHint'
-import { useDailyQuote } from '../hooks/useDailyQuote'
+import { RevealText } from "../components/RevealText";
+import { StarTrails } from "../components/StarTrails";
+import { ScrollHint } from "../components/ScrollHint";
+import { useDailyQuote } from "../hooks/useDailyQuote";
 
 export function QuotesSection() {
-  const quote = useDailyQuote()
+  const quote = useDailyQuote();
 
   return (
     <section id="quotes" className="section quotes-section">
@@ -14,7 +14,7 @@ export function QuotesSection() {
           <p>&ldquo;{quote}&rdquo;</p>
         </RevealText>
       </div>
-      <ScrollHint targetId="work" label="Scroll down to next" />
+      <ScrollHint targetId="timeline" label="Scroll down to next" />
     </section>
-  )
+  );
 }
