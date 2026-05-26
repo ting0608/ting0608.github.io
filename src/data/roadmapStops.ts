@@ -42,7 +42,7 @@ export const roadmapStops: RoadmapStop[] = [
     year: 2024,
     title: "Growing",
     description:
-      "Joined Daikin Malaysia as a mobile app dev, gaining exposure and learnt a lot from the team. ",
+      "Joined Daikin Malaysia as a mobile app dev, gaining exposure and learnt a lot from the team. (DAMN they are just great)",
     image: roadmapImages.daikin24,
     x: 61,
     y: 57,
@@ -52,7 +52,7 @@ export const roadmapStops: RoadmapStop[] = [
     year: 2025,
     title: "Climbing up",
     description:
-      "Doing good in app team, learnt a lot of cloud stuff as well along the way. Handling alot of projects.",
+      "Doing good in app team, learnt a lot of cloud stuff as well along the way. Happy with this env 🤓.",
     image: roadmapImages.daikin25,
     x: 49,
     y: 35,
