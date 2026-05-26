@@ -487,6 +487,18 @@ h2 {
   transform: translateX(-100%);
 }
 
+@media (max-width: 640px) {
+  .collage-stage {
+    padding: 1.75rem 0.75rem 2.25rem;
+  }
+
+  .collage-float-text {
+    font-size: clamp(0.6rem, 2.6vw, 0.75rem);
+    max-width: min(6.5rem, 30vw);
+    line-height: 1.2;
+  }
+}
+
 @keyframes collage-float-in {
   from {
     opacity: 0;
