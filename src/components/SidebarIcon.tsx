@@ -1,5 +1,5 @@
 type SidebarIconProps = {
-  name: 'home' | 'comment' | 'timeline' | 'briefcase' | 'linkedin'
+  name: 'home' | 'comment' | 'roadmap' | 'briefcase' | 'linkedin'
   bold?: boolean
 }
 
@@ -33,11 +33,11 @@ export function SidebarIcon({ name, bold = false }: SidebarIconProps) {
     )
   }
 
-  if (name === 'timeline') {
+  if (name === 'roadmap') {
     return (
       <svg {...common}>
-        <circle cx="12" cy="12" r="8" />
-        <path d="M12 8v4l3 2" />
+        <path d="M4 6h16M4 12h10M4 18h14" />
+        <circle cx="18" cy="12" r="2.5" fill="currentColor" stroke="none" />
       </svg>
     )
   }

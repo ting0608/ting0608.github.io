@@ -1,12 +1,5 @@
 {
   "left-anchor": ["Computer Science with AI", "01s", "Ting Chung Cheng"],
   "center-focus": ["React Native", "Redux", "Some CICD", "AWS"],
-  "bottom-row": [
-    "Love memes",
-    "Making good videos",
-    "Gamer",
-    "Guitarist",
-    "Drummer",
-    "Pretty sure you dont have to know"
-  ]
+  "bottom-row": ["Love memes", "Make good videos", "Gamer", "Guitarist"]
 }

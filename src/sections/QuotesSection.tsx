@@ -14,7 +14,7 @@ export function QuotesSection() {
           <p>&ldquo;{quote}&rdquo;</p>
         </RevealText>
       </div>
-      <ScrollHint targetId="timeline" label="Scroll down to next" />
+      <ScrollHint targetId="roadmap" label="Scroll down to next" />
     </section>
   );
 }

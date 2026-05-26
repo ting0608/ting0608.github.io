@@ -1,3 +1,4 @@
+import { trackButtonClick } from '../lib/analytics'
 import { scrollToSection } from '../hooks/useSmoothScroll'
 
 type ScrollHintProps = {
@@ -6,7 +7,10 @@ type ScrollHintProps = {
 }
 
 export function ScrollHint({ targetId, label = 'Scroll down to next' }: ScrollHintProps) {
-  const scrollTo = () => scrollToSection(targetId)
+  const scrollTo = () => {
+    trackButtonClick(`scroll_hint_${targetId}`)
+    scrollToSection(targetId)
+  }
 
   return (
     <button type="button" className="scroll-hint" onClick={scrollTo}>

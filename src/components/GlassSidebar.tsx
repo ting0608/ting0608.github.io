@@ -1,46 +1,95 @@
-import { useEffect, useState } from 'react'
-import { scrollToSection } from '../hooks/useSmoothScroll'
+import { useEffect, useRef, useState } from 'react'
+import { trackButtonClick } from '../lib/analytics'
+import { getLenis, scrollToSection } from '../hooks/useSmoothScroll'
 import { SidebarIcon } from './SidebarIcon'
 
 const NAV_ITEMS = [
   { id: 'hero', label: 'Home', icon: 'home' as const },
   { id: 'quotes', label: 'Quotes', icon: 'comment' as const },
-  { id: 'timeline', label: 'Timeline', icon: 'timeline' as const },
+  { id: 'roadmap', label: 'Roadmap', icon: 'roadmap' as const },
   { id: 'work', label: 'Work', icon: 'briefcase' as const },
 ]
 
 const LINKEDIN_URL = 'https://www.linkedin.com/in/ting-chung-cheng-775a10225/'
 
+/** Viewport line used to decide which section is "current" (matches pinned roadmap). */
+const ACTIVE_PROBE_RATIO = 0.38
+const CLICK_LOCK_MS = 1400
+
+function getActiveSectionId() {
+  const probeY = window.innerHeight * ACTIVE_PROBE_RATIO
+
+  for (let i = NAV_ITEMS.length - 1; i >= 0; i -= 1) {
+    const el = document.getElementById(NAV_ITEMS[i].id)
+    if (!el) continue
+
+    const { top, bottom } = el.getBoundingClientRect()
+    if (top <= probeY && bottom > probeY) {
+      return NAV_ITEMS[i].id
+    }
+  }
+
+  return NAV_ITEMS[0].id
+}
+
 export function GlassSidebar() {
   const [activeId, setActiveId] = useState('hero')
+  const clickLockRef = useRef(false)
+  const clickLockTimerRef = useRef<number | null>(null)
 
   useEffect(() => {
-    const sections = NAV_ITEMS.map((item) => document.getElementById(item.id)).filter(
-      Boolean,
-    ) as HTMLElement[]
+    const updateActive = () => {
+      if (clickLockRef.current) return
+      setActiveId(getActiveSectionId())
+    }
 
-    if (sections.length === 0) return
+    updateActive()
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+    let detachLenis: (() => void) | undefined
+    const attachLenis = () => {
+      const lenis = getLenis()
+      if (!lenis) return false
+      lenis.on('scroll', updateActive)
+      detachLenis = () => lenis.off('scroll', updateActive)
+      return true
+    }
 
-        if (visible[0]?.target.id) {
-          setActiveId(visible[0].target.id)
+    let lenisPollId: number | undefined
+    if (!attachLenis()) {
+      lenisPollId = window.setInterval(() => {
+        if (attachLenis() && lenisPollId !== undefined) {
+          window.clearInterval(lenisPollId)
+          lenisPollId = undefined
         }
-      },
-      { threshold: [0.35, 0.55, 0.75] },
-    )
+      }, 50)
+    }
 
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
+    window.addEventListener('resize', updateActive)
+
+    return () => {
+      if (lenisPollId !== undefined) window.clearInterval(lenisPollId)
+      detachLenis?.()
+      window.removeEventListener('resize', updateActive)
+      if (clickLockTimerRef.current !== null) {
+        window.clearTimeout(clickLockTimerRef.current)
+      }
+    }
   }, [])
 
   const scrollTo = (id: string) => {
-    scrollToSection(id)
+    trackButtonClick(`nav_${id}`)
     setActiveId(id)
+    clickLockRef.current = true
+    if (clickLockTimerRef.current !== null) {
+      window.clearTimeout(clickLockTimerRef.current)
+    }
+    clickLockTimerRef.current = window.setTimeout(() => {
+      clickLockRef.current = false
+      clickLockTimerRef.current = null
+      setActiveId(getActiveSectionId())
+    }, CLICK_LOCK_MS)
+
+    scrollToSection(id)
   }
 
   return (
@@ -68,6 +117,7 @@ export function GlassSidebar() {
             title="LinkedIn"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackButtonClick('linkedin')}
           >
             <SidebarIcon name="linkedin" />
           </a>
